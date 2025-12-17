@@ -1,0 +1,197 @@
+/* ============================================
+   Table Enhancements - Expandable Rows & Customize Columns
+   ============================================ */
+
+/* Table Controls */
+.table-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.customize-columns-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.customize-columns-btn .chevron-down {
+    transition: transform 0.2s ease;
+}
+
+/* Columns Dropdown */
+.columns-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: var(--popover);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem 0;
+    min-width: 220px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 50;
+}
+
+.dropdown-header {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted-foreground);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+}
+
+.column-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.column-checkbox-label:hover {
+    background: var(--accent);
+}
+
+.column-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.column-checkbox-label span {
+    font-size: 0.875rem;
+    color: var(--foreground);
+}
+
+/* Expandable Row Styling */
+.th-expand,
+.td-expand {
+    width: 40px;
+    padding-left: 1rem !important;
+    padding-right: 0.5rem !important;
+}
+
+.expand-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: var(--muted-foreground);
+}
+
+.expand-btn:hover {
+    background: var(--accent);
+    color: var(--foreground);
+}
+
+.chevron-icon {
+    transition: transform 0.2s ease;
+}
+
+.chevron-icon.expanded {
+    transform: rotate(90deg);
+}
+
+/* Expanded Row Content */
+.expanded-row-content {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+}
+
+.expanded-row-content td {
+    padding: 0 !important;
+}
+
+.expanded-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--muted) / 0.3;
+    border-left: 3px solid var(--border);
+}
+
+/* Field Sections */
+.field-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.section-header {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.75rem 1rem;
+    background: var(--muted);
+    border-left: 3px solid var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.section-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 0;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    align-items: start;
+    border-bottom: 1px solid var(--border) / 0.5;
+    transition: background 0.15s ease;
+}
+
+.field-row:hover {
+    background: var(--accent) / 0.3;
+}
+
+.field-row:last-child {
+    border-bottom: none;
+}
+
+.field-label {
+    font-weight: 600;
+    color: var(--muted-foreground);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-top: 0.125rem;
+}
+
+.field-value {
+    color: var(--foreground);
+    font-size: 0.875rem;
+    font-family: var(--font-mono);
+    word-break: break-word;
+    line-height: 1.5;
+}
+
+/* Smooth transition for row expansion */
+.table-row {
+    transition: background-color 0.15s ease;
+}
+
+.table-row.expanded {
+    background: var(--accent) / 0.3;
+    border-left: 3px solid var(--primary);
+}

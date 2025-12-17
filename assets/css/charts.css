@@ -1,0 +1,248 @@
+/* ============================================
+   Chart Panel Styles
+   ============================================ */
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    align-items: stretch;
+}
+
+.chart-container {
+    height: 450px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-container .card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chart-full-width {
+    grid-column: 1 / -1;
+}
+
+.chart-container canvas {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    display: block;
+    margin-top: 1rem;
+}
+
+/* Chart header with actions */
+.chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.chart-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.chart-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Tooltips */
+.chart-tooltip {
+    position: fixed;
+    display: none;
+    background: var(--popover);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    color: var(--popover-foreground);
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    max-width: 200px;
+}
+
+.chart-tooltip strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--foreground);
+}
+
+/* Legend */
+.chart-legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    transition: color var(--transition-base);
+}
+
+.legend-item:hover {
+    color: var(--foreground);
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+.legend-item.disabled {
+    opacity: 0.4;
+}
+
+/* Sparkline container */
+.metric-sparkline {
+    margin-top: 0.75rem;
+}
+
+.metric-sparkline canvas {
+    display: block;
+    width: 100px;
+    height: 30px;
+}
+
+/* Empty state */
+.chart-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+}
+
+/* Loading state */
+.chart-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+}
+
+.chart-loading::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin-left: 0.5rem;
+    border: 2px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .charts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-full-width {
+        grid-column: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .chart-legend {
+        gap: 1rem;
+    }
+
+    .legend-item {
+        font-size: 0.7rem;
+    }
+
+    .legend-color {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .chart-tooltip {
+        display: none !important;
+    }
+
+    .charts-grid {
+        break-inside: avoid;
+    }
+}
+
+/* ============================================
+   Radial Chart Styles
+   ============================================ */
+
+.radial-chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 1rem;
+}
+
+.radial-chart {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+.radial-chart text {
+    font-family: var(--font-sans);
+    user-select: none;
+}
+
+.radial-chart path {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.radial-chart path:hover {
+    opacity: 1 !important;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .radial-chart-container {
+        min-height: 350px;
+        padding: 1rem 0.5rem;
+    }
+
+    .radial-chart {
+        max-width: 350px;
+    }
+}

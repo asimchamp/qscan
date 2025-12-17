@@ -1,0 +1,70 @@
+/* ============================================
+   Theme Management
+   ============================================ */
+
+/* Smooth theme transitions */
+body,
+.card,
+.sidebar,
+.table,
+.btn,
+.select select,
+.nav-item {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    background-color: var(--accent));
+    border: 1px solid var(--border));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-colors);
+}
+
+.theme-toggle:hover {
+    background-color: var(--accent) / 0.8);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    color: var(--foreground));
+}
+
+/* Hide/show icons based on theme */
+[data-theme="light"] .theme-toggle .moon-icon {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .sun-icon {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+    display: block;
+}
+
+/* System preference detection */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+        --card: 222.2 84% 4.9%;
+        --card-foreground: 210 40% 98%;
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+        --border: 217.2 32.6% 17.5%;
+        --input: 217.2 32.6% 17.5%;
+    }
+}
